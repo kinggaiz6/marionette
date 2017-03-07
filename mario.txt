@@ -1,0 +1,65 @@
+DROP DATABASE IF EXISTS Marionette;
+create database Marionette;
+use Marionette;
+DROP TABLE IF EXISTS content;
+
+create table content (
+NUM int(11) not null auto_increment,
+cont_category varchar(100),
+cont_name varchar(100),
+cont_price varchar(100),
+cont_detail varchar(100),
+cont_effect_sound varchar(100),
+cont_background_sound varchar(100),
+cont_voice varchar(100),
+cont_moving varchar(255),
+cont_image varchar(100),
+cont_check boolean,
+cont_sell int(11),
+cont_video varchar(255),
+primary key(NUM)
+);
+
+DROP TABLE IF EXISTS user;
+
+create table user (
+user_id varchar(20) not null,
+user_password varchar(20),
+user_name varchar(20),
+primary key(user_id)
+);
+
+DROP TABLE IF EXISTS userMario;
+
+create table userMario(
+NUM int(11) not null auto_increment,
+user_id varchar(20),
+cont_category varchar(20),
+cont_name varchar(20),
+cont_price varchar(20),
+cont_detail varchar(20),
+cont_effect_sound varchar(100),
+cont_background_sound varchar(100),
+cont_voice varchar(100),
+cont_moving varchar(255),
+cont_image varchar(100),
+cont_date DATE,
+cont_info tinyint(1),
+cont_video varchar(255),
+primary key(NUM),
+FOREIGN KEY(user_id) REFERENCES user(user_id) ON UPDATE CASCADE ON DELETE CASCADE 
+);
+
+
+DROP TABLE IF EXISTS creatingFile;
+
+create table creatingFile(
+NUM int(11) not null auto_increment,
+background_sound varchar(100),
+effect_sound varchar(100),
+basic_moving varchar(100),
+primary key(NUM)
+);
+
+
+
